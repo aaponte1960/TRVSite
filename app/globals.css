@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans:
+      "Aptos", "Avenir Next", "Neue Haas Grotesk Text Pro", "Helvetica Neue",
+      "Segoe UI", Helvetica, Arial, sans-serif;
+    --font-display:
+      "Baskerville", "Baskerville Old Face", "Iowan Old Style",
+      "Palatino Linotype", "Book Antiqua", "Times New Roman", serif;
+    --background: 231 69% 16%;
+    --foreground: 43 72% 88%;
+    --card: 230 61% 19%;
+    --card-foreground: 43 72% 88%;
+    --popover: 230 61% 18%;
+    --popover-foreground: 43 72% 88%;
+    --primary: 44 86% 63%;
+    --primary-foreground: 230 74% 16%;
+    --secondary: 230 46% 26%;
+    --secondary-foreground: 43 72% 88%;
+    --muted: 229 42% 23%;
+    --muted-foreground: 41 36% 72%;
+    --accent: 227 43% 29%;
+    --accent-foreground: 43 72% 88%;
+    --destructive: 0 72% 52%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 228 38% 36%;
+    --input: 228 38% 36%;
+    --ring: 44 86% 63%;
+    --radius: 1rem;
+  }
+
+  :root[data-theme="light"] {
+    --background: 42 44% 96%;
+    --foreground: 227 55% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 227 55% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 227 55% 20%;
+    --primary: 222 67% 44%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 219 54% 92%;
+    --secondary-foreground: 227 55% 20%;
+    --muted: 215 38% 92%;
+    --muted-foreground: 223 24% 39%;
+    --accent: 213 54% 89%;
+    --accent-foreground: 227 55% 20%;
+    --border: 218 26% 82%;
+    --input: 218 26% 82%;
+    --ring: 222 67% 44%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    letter-spacing: 0.01em;
+    line-height: 1.6;
+    background-image:
+      radial-gradient(circle at top, rgba(63, 90, 255, 0.36), transparent 26%),
+      radial-gradient(circle at 80% 20%, rgba(247, 201, 83, 0.18), transparent 22%),
+      linear-gradient(180deg, rgba(11, 22, 93, 0.98), rgba(18, 29, 111, 0.96));
+    min-height: 100vh;
+  }
+
+  :root[data-theme="light"] body {
+    background-image:
+      radial-gradient(circle at top, rgba(72, 113, 255, 0.12), transparent 24%),
+      radial-gradient(circle at 80% 20%, rgba(36, 92, 219, 0.08), transparent 22%),
+      linear-gradient(180deg, rgba(250, 248, 242, 0.98), rgba(242, 244, 250, 0.98));
+  }
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), serif;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    line-height: 1.05;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a,
+  button {
+    transition:
+      color 180ms ease,
+      border-color 180ms ease,
+      background-color 180ms ease,
+      transform 180ms ease;
+  }
+}
+
+@layer utilities {
+  .gold-text {
+    @apply bg-gradient-to-r from-[#fff2bf] via-[#f6cf62] to-[#c99217] bg-clip-text text-transparent;
+  }
+
+  .royal-panel {
+    background:
+      linear-gradient(180deg, rgba(24, 39, 132, 0.88), rgba(15, 27, 104, 0.92)),
+      linear-gradient(135deg, rgba(255, 230, 153, 0.06), transparent 55%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 233, 164, 0.2),
+      0 20px 60px rgba(5, 10, 45, 0.35);
+  }
+
+  :root[data-theme="light"] .royal-panel {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(242, 246, 255, 0.94)),
+      linear-gradient(135deg, rgba(59, 109, 255, 0.05), transparent 55%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      0 20px 60px rgba(37, 61, 132, 0.1);
+  }
+
+  .gold-border {
+    border-color: rgba(247, 201, 83, 0.34);
+  }
+
+  :root[data-theme="light"] .gold-border {
+    border-color: rgba(45, 91, 210, 0.18);
+  }
+}
