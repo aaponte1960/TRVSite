@@ -25,6 +25,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
+import { SocialConnect } from "@/components/ui/connect-with-us"
 
 type Theme = "dark" | "light"
 type Language = "en" | "es"
@@ -59,9 +60,11 @@ const copy = {
   en: {
     officialPresence: "Official Presence",
     nav: {
+      about: "About",
       profile: "Profile",
       values: "Values",
-      presence: "Presence",
+      presence: "Offerings",
+      videos: "Videos",
       contact: "Contact",
     },
     controls: {
@@ -74,21 +77,23 @@ const copy = {
       contactNow: "Contact Now",
       visitFacebook: "Visit Facebook",
       sendMessage: "Send Message",
+      sending: "Sending...",
+      successMessage: "Message sent successfully!",
+      errorMessage: "Something went wrong. Please try again.",
     },
     hero: {
       badge: "Distinguished identity",
-      title: "A more formal digital presence for",
+      title: "",
       highlight: "Dr. Alfonso Aponte",
-      description:
-        "Rooted in the crest, the royal blue background, and the dignified tone of the original mark, this site now feels elegant, trustworthy, and unmistakably his.",
+      description: "",
       cards: [
-        "A dark theme centered on royal blue and gold for a formal first impression.",
-        "A light theme inspired by the earlier version, now refined with blue accents.",
-        "A bilingual experience with an English and Spanish toggle built into the header.",
+        "EDUCATION WITH INTEGRITY",
+        "ETHICAL EDUCATION",
+        "PURPOSEFUL EDUCATION",
       ],
       facts: {
         location: "Location",
-        locationValue: "Bayamon, Puerto Rico",
+        locationValue: "Puerto Rico",
         channel: "Contact",
         channelValue: "Facebook + Email",
         style: "Style",
@@ -112,47 +117,45 @@ const copy = {
         {
           title: "Integrity",
           description:
-            "A disciplined public-facing identity grounded in trust, seriousness, and consistency.",
+            "We form leaders and ministers who choose to do the right thing both in public and in private, living with transparency and authenticity under the gaze of God and the testimony of their communities.",
         },
         {
-          title: "Leadership",
+          title: "Ethics",
           description:
-            "A professional image that communicates authority, preparation, and calm decision-making.",
+            "We instill solid moral principles based on the word of God, guiding our students to exercise leadership and ministry aligned with biblical principles.",
         },
         {
-          title: "Service",
+          title: "Purpose",
           description:
-            "A presence shaped around people, community connection, and meaningful engagement.",
+            "We accompany each student in discovering their unique talents and life's meaning, responding with faith and vocation to the calling that God has for their future.",
         },
       ],
     },
     presence: {
-      badge: "Presence",
-      title: "A signature presence that feels ceremonial and personal at the same time",
+      badge: "Offerings",
+      title: "Programs that form competent ministers and leaders to expand the Kingdom of God",
       body1:
-        "The hero now uses Alfonso's actual brand image instead of a generic substitute, making the site feel directly anchored to his identity from the first screen.",
-      body2:
-        "Royal blues establish depth and seriousness, while lighter mode softens the experience without losing the same blue-led personality.",
-      notesTitle: "Directional notes",
+        "To form competent, integral, and committed leaders, ministers, and pastoral counselors through a progressive academic process that integrates biblical foundation, character development, organizational competencies, ministerial skills, and clinical-pastoral skills, enabling them to exercise a transforming ministry.",
+      body2: "",
+      notesTitle: "Certifications",
       notes: [
-        "Stronger emphasis on Alfonso's name and crest than on generic marketing copy.",
-        "A real dark and light theme switch, each built from the same visual identity.",
-        "A bilingual toggle so visitors can move between English and Spanish instantly.",
+        "Certification in Leadership and Ministry",
+        "Certification in Clinical Pastoral Counseling",
+        "Certification in Support for Victims of Spiritual Abuse",
+        "Leadership Development Workshops",
       ],
     },
     contact: {
       badge: "Contact",
       title: "Get in touch with Dr. Alfonso Aponte",
-      description:
-        "Reach out by email or connect through Facebook. Contact details stay clear and immediate in both themes and both languages.",
+      description: "",
       labels: {
         email: "Email",
         facebook: "Facebook",
         location: "Location",
       },
       formTitle: "Send a message",
-      formDescription:
-        "This inquiry form keeps the presentation polished while giving Alfonso a direct contact entry point.",
+      formDescription: "",
       placeholders: {
         firstName: "First name",
         lastName: "Last name",
@@ -160,15 +163,23 @@ const copy = {
         message: "Write your message",
       },
     },
-    footerLocation: "Bayamon, Puerto Rico",
+    latestVideo: {
+      badge: "Latest Update",
+      title: "Recent from the channel",
+      description: "Watch the latest message and insights from Dr. Alfonso Aponte.",
+      viewAll: "View All Videos",
+    },
+    footerLocation: "Puerto Rico",
     footerFacebook: "Facebook Profile",
   },
   es: {
     officialPresence: "Presencia Oficial",
     nav: {
+      about: "Sobre Mí",
       profile: "Perfil",
       values: "Valores",
-      presence: "Presencia",
+      presence: "Ofrecimientos",
+      videos: "Videos",
       contact: "Contacto",
     },
     controls: {
@@ -181,21 +192,23 @@ const copy = {
       contactNow: "Contactar Ahora",
       visitFacebook: "Ver Facebook",
       sendMessage: "Enviar Mensaje",
+      sending: "Enviando...",
+      successMessage: "¡Mensaje enviado con éxito!",
+      errorMessage: "Ocurrió un error. Por favor inténtalo de nuevo.",
     },
     hero: {
       badge: "Identidad distinguida",
-      title: "Una presencia digital mas formal para",
+      title: "",
       highlight: "Dr. Alfonso Aponte",
-      description:
-        "Inspirado en el escudo, el fondo azul real y el tono distinguido de la marca original, este sitio ahora se siente elegante, confiable e inconfundiblemente suyo.",
+      description: "",
       cards: [
-        "Un tema oscuro centrado en azul real y dorado para una primera impresion formal.",
-        "Un tema claro inspirado en la version anterior, ahora refinado con acentos azules.",
-        "Una experiencia bilingue con selector de ingles y espanol integrado en el encabezado.",
+        "EDUCACIÓN CON INTEGRIDAD",
+        "EDUCACIÓN ÉTICA",
+        "EDUCACIÓN CON PROPÓSITO",
       ],
       facts: {
         location: "Ubicacion",
-        locationValue: "Bayamon, Puerto Rico",
+        locationValue: "Puerto Rico",
         channel: "Contacto",
         channelValue: "Facebook + Email",
         style: "Estilo",
@@ -219,47 +232,45 @@ const copy = {
         {
           title: "Integridad",
           description:
-            "Una identidad publica disciplinada basada en confianza, seriedad y consistencia.",
+            "Formamos Líderes y ministros que eligen hacer lo correcto tanto en público como en la intimidad, viviendo con transparencia y autenticidad bajo la mirada de Dios y el testimonio de sus comunidades.",
         },
         {
-          title: "Liderazgo",
+          title: "Ética",
           description:
-            "Una imagen profesional que comunica autoridad, preparacion y calma al decidir.",
+            "Inculcamos principios morales sólidos basados en la palabra de Dios, guiando a nuestros estudiantes a ejercer el liderazgo y el ministerio alineados a los principios bíblicos.",
         },
         {
-          title: "Servicio",
+          title: "Propósito",
           description:
-            "Una presencia orientada a las personas, la conexion comunitaria y el compromiso significativo.",
+            "Acompañamos a cada alumno a descubrir sus talentos únicos y el sentido de su vida, respondiendo con fe y vocación al llamado que Dios tiene para su futuro.",
         },
       ],
     },
     presence: {
-      badge: "Presencia",
-      title: "Una presencia distintiva que se siente ceremonial y cercana al mismo tiempo",
+      badge: "Ofrecimientos",
+      title: "Programas que crean ministros y líderes competentes para expandir el Reino de Dios",
       body1:
-        "El hero ahora utiliza la imagen real de la marca de Alfonso en lugar de un recurso generico, haciendo que el sitio se sienta directamente anclado a su identidad desde la primera pantalla.",
-      body2:
-        "Los azules reales aportan profundidad y seriedad, mientras que el modo claro suaviza la experiencia sin perder la misma personalidad guiada por el azul.",
-      notesTitle: "Notas de direccion",
+        "Formar líderes, ministros y consejeros pastorales competentes, íntegros y comprometidos, mediante un proceso académico progresivo que integra fundamento bíblico, desarrollo del carácter, competencias organizacionales, habilidades ministeriales y destrezas clínico-pastorales, habilitándolos para ejercer un ministerio transformador.",
+      body2: "",
+      notesTitle: "Certificaciones",
       notes: [
-        "Mayor enfasis en el nombre y el escudo de Alfonso que en texto generico de mercadeo.",
-        "Un cambio real entre tema oscuro y claro, ambos construidos desde la misma identidad visual.",
-        "Un selector bilingue para cambiar entre ingles y espanol al instante.",
+        "Certificación en Liderazgo y Ministerio",
+        "Certificación en Consejería Pastoral Clínica",
+        "Certificación en Apoyo a Víctimas de Abuso Espiritual",
+        "Talleres de Desarrollo de Liderazgo",
       ],
     },
     contact: {
       badge: "Contacto",
       title: "Ponte en contacto con el Dr. Alfonso Aponte",
-      description:
-        "Escribe por email o conecta mediante Facebook. Los datos de contacto permanecen claros e inmediatos en ambos temas y ambos idiomas.",
+      description: "",
       labels: {
         email: "Email",
         facebook: "Facebook",
         location: "Ubicacion",
       },
       formTitle: "Enviar un mensaje",
-      formDescription:
-        "Este formulario mantiene una presentacion elegante mientras ofrece un punto de contacto directo para Alfonso.",
+      formDescription: "",
       placeholders: {
         firstName: "Nombre",
         lastName: "Apellido",
@@ -267,18 +278,64 @@ const copy = {
         message: "Escribe tu mensaje",
       },
     },
-    footerLocation: "Bayamon, Puerto Rico",
+    latestVideo: {
+      badge: "Última Actualización",
+      title: "Reciente del canal",
+      description: "Mira el último mensaje y reflexiones del Dr. Alfonso Aponte.",
+      viewAll: "Ver Todos los Videos",
+    },
+    footerLocation: "Puerto Rico",
     footerFacebook: "Perfil de Facebook",
   },
 } as const
 
+import { YouTubeVideo } from "@/lib/youtube"
+
 const pillarIcons = [Shield, Scale, Users]
 
-export function DesignAgency() {
+export function DesignAgency({ latestVideo }: { latestVideo?: YouTubeVideo | null }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
   const [theme, setTheme] = useState<Theme>("dark")
   const [language, setLanguage] = useState<Language>("en")
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: "",
+  })
+  const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!formData.firstName || !formData.email || !formData.message) return
+    setFormStatus("loading")
+
+    try {
+      const formId = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID || "meedprze"
+      const response = await fetch(`https://formspree.io/f/${formId}`, {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`.trim(),
+          email: formData.email,
+          message: formData.message,
+        }),
+      })
+
+      if (response.ok) {
+        setFormStatus("success")
+        setFormData({ firstName: "", lastName: "", email: "", message: "" })
+      } else {
+        setFormStatus("error")
+      }
+    } catch (error) {
+      setFormStatus("error")
+    }
+  }
 
   useEffect(() => {
     const savedTheme = window.localStorage.getItem("alfonso-theme") as Theme | null
@@ -305,9 +362,10 @@ export function DesignAgency() {
 
   const t = copy[language]
   const navigation = [
-    { id: "profile", label: t.nav.profile },
+    { id: "about", label: t.nav.about, href: "/about" },
     { id: "values", label: t.nav.values },
     { id: "presence", label: t.nav.presence },
+    { id: "videos", label: t.nav.videos, href: "/videos" },
     { id: "contact", label: t.nav.contact },
   ]
   const isDark = theme === "dark"
@@ -344,21 +402,13 @@ export function DesignAgency() {
             >
               <Image src="/alfonso-aponte-brand.jpg" alt="Dr. Alfonso Aponte crest" fill className="object-cover" sizes="48px" />
             </div>
-            <div>
-              <p className={cn("font-display text-xl font-semibold", isDark ? "text-white" : "text-[#1b2a67]")}>
-                Dr. Alfonso Aponte
-              </p>
-              <p className={cn("text-xs uppercase tracking-[0.35em]", isDark ? "text-[#d9c27a]" : "text-[#4667c9]")}>
-                {t.officialPresence}
-              </p>
-            </div>
           </Link>
 
           <nav className="hidden items-center gap-6 md:flex">
             {navigation.map((item) => (
               <Link
                 key={item.id}
-                href={`#${item.id}`}
+                href={item.href || `#${item.id}`}
                 className={cn(
                   "text-sm font-medium uppercase tracking-[0.18em] transition-colors",
                   isDark ? "text-[#d4d9ff] hover:text-primary" : "text-[#3550a8] hover:text-primary",
@@ -479,7 +529,7 @@ export function DesignAgency() {
             {navigation.map((item) => (
               <Link
                 key={item.id}
-                href={`#${item.id}`}
+                href={item.href || `#${item.id}`}
                 className={cn(
                   "flex items-center justify-between rounded-2xl border px-4 py-3 text-sm uppercase tracking-[0.18em]",
                   isDark ? "border-white/10 bg-white/5 text-white" : "border-[#d9e3fb] bg-[#f8fbff] text-[#26438f]",
@@ -500,14 +550,11 @@ export function DesignAgency() {
           <div className="container relative">
             <div className="royal-panel gold-border grid overflow-hidden rounded-[2rem] border px-6 py-8 md:px-10 md:py-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="space-y-6">
-                <div className={cn("inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs uppercase tracking-[0.28em]", isDark ? "border-primary/35 bg-white/5 text-[#f1df9f]" : "border-primary/20 bg-primary/5 text-[#4460b8]")}>
-                  <Sparkles className="h-3.5 w-3.5" />
-                  {t.hero.badge}
-                </div>
+
 
                 <div className="space-y-4">
                   <h1 className={cn("max-w-3xl font-display text-5xl font-semibold leading-[0.95] sm:text-6xl xl:text-7xl", isDark ? "text-white" : "text-[#1b2a67]")}>
-                    {t.hero.title} <span className={cn(isDark ? "gold-text" : "text-primary")}>{t.hero.highlight}</span>
+                    {t.hero.title} <span className="text-[#ffd700] whitespace-nowrap">{t.hero.highlight}</span>
                   </h1>
                   <p className={cn("max-w-2xl text-lg leading-8 md:text-xl", isDark ? "text-[#d7dcff]" : "text-[#50608e]")}>
                     {t.hero.description}
@@ -516,7 +563,7 @@ export function DesignAgency() {
 
                 <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="flex flex-col gap-3 sm:flex-row">
                   <Button asChild size="lg" className="rounded-full bg-primary px-8 text-primary-foreground hover:bg-primary/90">
-                    <Link href="#contact">
+                    <Link href="mailto:dralfonsoaponte@gmail.com">
                       {t.controls.contactNow}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
@@ -530,8 +577,19 @@ export function DesignAgency() {
 
                 <div className="grid gap-3 sm:grid-cols-3">
                   {t.hero.cards.map((item) => (
-                    <div key={item} className={cn("rounded-2xl border p-4 text-sm leading-6", isDark ? "border-white/10 bg-white/5 text-[#d4d9ff]" : "border-[#d9e3fb] bg-white/80 text-[#4a5f99]")}>
-                      {item}
+                    <div
+                      key={item}
+                      className={cn(
+                        "rounded-2xl border p-4 transition-all duration-300 hover:scale-[1.03]",
+                        isDark 
+                          ? "border-white/10 bg-white/5 text-[#d4d9ff]" 
+                          : "border-[#d9e3fb] bg-white/80 text-[#4a5f99]",
+                        "flex items-center justify-center text-center font-bold tracking-wider border-primary/25 shadow-[0_0_15px_rgba(247,201,83,0.06)] min-h-[90px]"
+                      )}
+                    >
+                      <span className={cn(isDark ? "gold-text text-base" : "text-primary text-base")}>
+                        {item}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -544,18 +602,6 @@ export function DesignAgency() {
                     <div className={cn("relative aspect-[4/4] overflow-hidden rounded-[1.8rem] border", isDark ? "border-primary/25" : "border-[#d6e0fb]")}>
                       <Image src="/alfonso-aponte-brand.jpg" alt="Dr. Alfonso Aponte brand mark" fill priority className="object-cover" sizes="(max-width: 1024px) 100vw, 560px" />
                     </div>
-                    <div className="grid gap-3 px-2 pb-2 pt-5 sm:grid-cols-3">
-                      {[
-                        [t.hero.facts.location, t.hero.facts.locationValue],
-                        [t.hero.facts.channel, t.hero.facts.channelValue],
-                        [t.hero.facts.style, t.hero.facts.styleValue],
-                      ].map(([label, value]) => (
-                        <div key={label} className={cn("rounded-2xl border p-4", isDark ? "border-primary/20 bg-white/5" : "border-[#d9e3fb] bg-[#f8fbff]")}>
-                          <p className={cn("text-xs uppercase tracking-[0.25em]", isDark ? "text-[#d6bf72]" : "text-[#4460b8]")}>{label}</p>
-                          <p className={cn("mt-2 text-sm", isDark ? "text-white" : "text-[#1b2a67]")}>{value}</p>
-                        </div>
-                      ))}
-                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -563,22 +609,7 @@ export function DesignAgency() {
           </div>
         </section>
 
-        <section id="profile" className="py-10 md:py-16">
-          <div className="container">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="royal-panel gold-border grid gap-8 rounded-[2rem] border px-6 py-10 md:px-10 lg:grid-cols-[0.9fr_1.1fr]">
-              <div className="space-y-4">
-                <div className={cn("inline-flex rounded-full border px-4 py-2 text-xs uppercase tracking-[0.28em]", isDark ? "border-primary/30 bg-white/5 text-[#e4cf8d]" : "border-primary/20 bg-primary/5 text-[#4460b8]")}>
-                  {t.profile.badge}
-                </div>
-                <h2 className={cn("font-display text-4xl md:text-5xl", isDark ? "text-white" : "text-[#1b2a67]")}>{t.profile.title}</h2>
-              </div>
-              <div className={cn("space-y-5 text-base leading-8 md:text-lg", isDark ? "text-[#d8dcfb]" : "text-[#50608e]")}>
-                <p>{t.profile.body1}</p>
-                <p>{t.profile.body2}</p>
-              </div>
-            </motion.div>
-          </div>
-        </section>
+
 
         <section id="values" className="py-10 md:py-16">
           <div className="container">
@@ -617,7 +648,7 @@ export function DesignAgency() {
                 <h2 className={cn("mt-5 font-display text-4xl md:text-5xl", isDark ? "text-white" : "text-[#1b2a67]")}>{t.presence.title}</h2>
                 <div className={cn("mt-6 space-y-4 text-base leading-8 md:text-lg", isDark ? "text-[#d8dcfb]" : "text-[#50608e]")}>
                   <p>{t.presence.body1}</p>
-                  <p>{t.presence.body2}</p>
+                  {t.presence.body2 && <p>{t.presence.body2}</p>}
                 </div>
               </motion.div>
 
@@ -627,8 +658,8 @@ export function DesignAgency() {
                   <p className={cn("text-xs uppercase tracking-[0.28em]", isDark ? "text-[#e4cf8d]" : "text-[#4460b8]")}>{t.presence.notesTitle}</p>
                 </div>
                 <ul className={cn("mt-6 space-y-4 text-base leading-7", isDark ? "text-[#d8dcfb]" : "text-[#50608e]")}>
-                  {t.presence.notes.map((item) => (
-                    <li key={item} className={cn("rounded-2xl border px-4 py-4", isDark ? "border-white/10 bg-white/5" : "border-[#d9e3fb] bg-white/80")}>
+                  {t.presence.notes.map((item, index) => (
+                    <li key={index} className={cn("rounded-2xl border px-4 py-4", isDark ? "border-white/10 bg-white/5" : "border-[#d9e3fb] bg-white/80")}>
                       {item}
                     </li>
                   ))}
@@ -638,6 +669,39 @@ export function DesignAgency() {
           </div>
         </section>
 
+        {latestVideo && (
+          <section id="latest-video" className="py-10 md:py-16">
+            <div className="container">
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="royal-panel gold-border flex flex-col gap-8 rounded-[2rem] border px-6 py-10 md:px-10 lg:flex-row lg:items-center">
+                <div className="lg:w-1/2 space-y-6">
+                  <div className={cn("inline-flex rounded-full border px-4 py-2 text-xs uppercase tracking-[0.28em]", isDark ? "border-primary/30 bg-white/5 text-[#e4cf8d]" : "border-primary/20 bg-primary/5 text-[#4460b8]")}>
+                    {t.latestVideo.badge}
+                  </div>
+                  <h2 className={cn("font-display text-4xl md:text-5xl", isDark ? "text-white" : "text-[#1b2a67]")}>{t.latestVideo.title}</h2>
+                  <p className={cn("text-lg leading-8", isDark ? "text-[#d8dcfb]" : "text-[#50608e]")}>{t.latestVideo.description}</p>
+                  <Button asChild size="lg" className="mt-2 rounded-full bg-primary px-8 text-primary-foreground hover:bg-primary/90">
+                    <Link href="/videos">
+                      {t.latestVideo.viewAll}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+                <div className="lg:w-1/2 relative">
+                  <div className={cn("overflow-hidden rounded-[1.5rem] border aspect-video shadow-2xl", isDark ? "border-primary/35 shadow-black/40" : "border-[#cdd9fa] shadow-blue-100/40")}>
+                    <iframe 
+                      src={`https://www.youtube.com/embed/${latestVideo.id}`} 
+                      title={latestVideo.title}
+                      className="w-full h-full border-0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+        )}
+
         <section id="contact" className="py-12 md:py-20">
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="royal-panel gold-border grid gap-8 rounded-[2rem] border px-6 py-8 md:px-10 md:py-10 lg:grid-cols-[0.95fr_1.05fr]">
@@ -646,58 +710,87 @@ export function DesignAgency() {
                   {t.contact.badge}
                 </div>
                 <h2 className={cn("font-display text-4xl md:text-5xl", isDark ? "text-white" : "text-[#1b2a67]")}>{t.contact.title}</h2>
-                <p className={cn("max-w-xl text-lg leading-8", isDark ? "text-[#d8dcfb]" : "text-[#50608e]")}>{t.contact.description}</p>
+                {t.contact.description && (
+                  <p className={cn("max-w-xl text-lg leading-8", isDark ? "text-[#d8dcfb]" : "text-[#50608e]")}>{t.contact.description}</p>
+                )}
 
                 <div className="space-y-4">
-                  <Link href="mailto:trvinernacional@gmail.com" className={cn("flex items-start gap-4 rounded-[1.5rem] border p-4 hover:border-primary/35", isDark ? "border-white/10 bg-white/5" : "border-[#d9e3fb] bg-white/80")}>
+                  <Link href="mailto:dralfonsoaponte@gmail.com" className={cn("flex items-center gap-4 rounded-[1.5rem] border p-4 hover:border-primary/35", isDark ? "border-white/10 bg-white/5" : "border-[#d9e3fb] bg-white/80")}>
                     <div className={cn("rounded-2xl border p-3", isDark ? "border-primary/25 bg-primary/10" : "border-primary/15 bg-primary/5")}>
                       <Mail className="h-5 w-5 text-primary" />
                     </div>
                     <div>
-                      <p className={cn("text-xs uppercase tracking-[0.25em]", isDark ? "text-[#e4cf8d]" : "text-[#4460b8]")}>{t.contact.labels.email}</p>
-                      <p className={cn("mt-1 text-base", isDark ? "text-white" : "text-[#1b2a67]")}>trvinernacional@gmail.com</p>
+                      <p className={cn("text-lg font-medium", isDark ? "text-white" : "text-[#1b2a67]")}>Email</p>
                     </div>
                   </Link>
-
-                  <Link href="https://www.facebook.com/Alfonso.Aponte.TRV/" target="_blank" rel="noreferrer" className={cn("flex items-start gap-4 rounded-[1.5rem] border p-4 hover:border-primary/35", isDark ? "border-white/10 bg-white/5" : "border-[#d9e3fb] bg-white/80")}>
-                    <div className={cn("rounded-2xl border p-3", isDark ? "border-primary/25 bg-primary/10" : "border-primary/15 bg-primary/5")}>
-                      <Facebook className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className={cn("text-xs uppercase tracking-[0.25em]", isDark ? "text-[#e4cf8d]" : "text-[#4460b8]")}>{t.contact.labels.facebook}</p>
-                      <p className={cn("mt-1 text-base", isDark ? "text-white" : "text-[#1b2a67]")}>facebook.com/Alfonso.Aponte.TRV</p>
-                    </div>
-                  </Link>
-
-                  <div className={cn("flex items-start gap-4 rounded-[1.5rem] border p-4", isDark ? "border-white/10 bg-white/5" : "border-[#d9e3fb] bg-white/80")}>
-                    <div className={cn("rounded-2xl border p-3", isDark ? "border-primary/25 bg-primary/10" : "border-primary/15 bg-primary/5")}>
-                      <MapPin className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className={cn("text-xs uppercase tracking-[0.25em]", isDark ? "text-[#e4cf8d]" : "text-[#4460b8]")}>{t.contact.labels.location}</p>
-                      <p className={cn("mt-1 text-base", isDark ? "text-white" : "text-[#1b2a67]")}>Bayamon, Puerto Rico</p>
-                    </div>
-                  </div>
                 </div>
               </div>
 
               <div className={cn("rounded-[1.8rem] border p-6 shadow-inner", isDark ? "border-primary/20 bg-[#0b165f]/80 shadow-black/20" : "border-[#d9e3fb] bg-[#f8fbff] shadow-blue-100/50")}>
                 <h3 className={cn("font-display text-3xl", isDark ? "text-white" : "text-[#1b2a67]")}>{t.contact.formTitle}</h3>
-                <p className={cn("mt-2 text-sm leading-6", isDark ? "text-[#d8dcfb]" : "text-[#50608e]")}>{t.contact.formDescription}</p>
-                <form className="mt-6 space-y-4">
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <Input placeholder={t.contact.placeholders.firstName} className={cn("rounded-full", isDark ? "border-white/15 bg-white/5 text-white placeholder:text-[#b6bde7]" : "border-[#d9e3fb] bg-white text-[#1b2a67] placeholder:text-[#7a88b1]")} />
-                    <Input placeholder={t.contact.placeholders.lastName} className={cn("rounded-full", isDark ? "border-white/15 bg-white/5 text-white placeholder:text-[#b6bde7]" : "border-[#d9e3fb] bg-white text-[#1b2a67] placeholder:text-[#7a88b1]")} />
-                  </div>
-                  <Input type="email" placeholder={t.contact.placeholders.email} className={cn("rounded-full", isDark ? "border-white/15 bg-white/5 text-white placeholder:text-[#b6bde7]" : "border-[#d9e3fb] bg-white text-[#1b2a67] placeholder:text-[#7a88b1]")} />
-                  <Textarea placeholder={t.contact.placeholders.message} className={cn("min-h-[150px] rounded-[1.5rem]", isDark ? "border-white/15 bg-white/5 text-white placeholder:text-[#b6bde7]" : "border-[#d9e3fb] bg-white text-[#1b2a67] placeholder:text-[#7a88b1]")} />
-                  <Button className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90">{t.controls.sendMessage}</Button>
-                </form>
+                {t.contact.formDescription && (
+                  <p className={cn("mt-2 text-sm leading-6", isDark ? "text-[#d8dcfb]" : "text-[#50608e]")}>{t.contact.formDescription}</p>
+                )}
+                {formStatus === "success" ? (
+                  <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className={cn("mt-6 rounded-2xl border p-6 text-center shadow-md", isDark ? "border-emerald-500/35 bg-emerald-500/10 text-emerald-300" : "border-emerald-200 bg-emerald-50 text-emerald-800")}>
+                    <p className="text-lg font-medium">{t.controls.successMessage}</p>
+                    <Button onClick={() => setFormStatus("idle")} className="mt-4 rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
+                      {language === "es" ? "Enviar otro mensaje" : "Send another message"}
+                    </Button>
+                  </motion.div>
+                ) : (
+                  <form onSubmit={handleFormSubmit} className="mt-6 space-y-4">
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      <Input
+                        required
+                        value={formData.firstName}
+                        onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                        placeholder={t.contact.placeholders.firstName}
+                        className={cn("rounded-full", isDark ? "border-white/15 bg-white/5 text-white placeholder:text-[#b6bde7]" : "border-[#d9e3fb] bg-white text-[#1b2a67] placeholder:text-[#7a88b1]")}
+                      />
+                      <Input
+                        value={formData.lastName}
+                        onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                        placeholder={t.contact.placeholders.lastName}
+                        className={cn("rounded-full", isDark ? "border-white/15 bg-white/5 text-white placeholder:text-[#b6bde7]" : "border-[#d9e3fb] bg-white text-[#1b2a67] placeholder:text-[#7a88b1]")}
+                      />
+                    </div>
+                    <Input
+                      required
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder={t.contact.placeholders.email}
+                      className={cn("rounded-full", isDark ? "border-white/15 bg-white/5 text-white placeholder:text-[#b6bde7]" : "border-[#d9e3fb] bg-white text-[#1b2a67] placeholder:text-[#7a88b1]")}
+                    />
+                    <Textarea
+                      required
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      placeholder={t.contact.placeholders.message}
+                      className={cn("min-h-[150px] rounded-[1.5rem]", isDark ? "border-white/15 bg-white/5 text-white placeholder:text-[#b6bde7]" : "border-[#d9e3fb] bg-white text-[#1b2a67] placeholder:text-[#7a88b1]")}
+                    />
+                    <Button
+                      disabled={formStatus === "loading"}
+                      type="submit"
+                      className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
+                    >
+                      {formStatus === "loading" ? t.controls.sending : t.controls.sendMessage}
+                    </Button>
+                    {formStatus === "error" && (
+                      <p className={cn("mt-2 text-center text-sm font-medium", isDark ? "text-rose-400" : "text-rose-600")}>
+                        {t.controls.errorMessage}
+                      </p>
+                    )}
+                  </form>
+                )}
               </div>
             </motion.div>
           </div>
         </section>
       </main>
+
+      <SocialConnect isDark={isDark} />
 
       <footer className={cn("border-t transition-colors duration-300", isDark ? "border-white/10 bg-[#050c3b]" : "border-[#d9e3fb] bg-white/80")}>
         <div className="container flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between">
@@ -712,8 +805,8 @@ export function DesignAgency() {
           </div>
 
           <div className={cn("flex flex-col gap-3 text-sm md:items-end", isDark ? "text-[#d8dcfb]" : "text-[#50608e]")}>
-            <Link href="mailto:trvinernacional@gmail.com" className="hover:text-primary">
-              trvinernacional@gmail.com
+            <Link href="mailto:dralfonsoaponte@gmail.com" className="hover:text-primary">
+              dralfonsoaponte@gmail.com
             </Link>
             <Link href="https://www.facebook.com/Alfonso.Aponte.TRV/" target="_blank" rel="noreferrer" className="hover:text-primary">
               {t.footerFacebook}

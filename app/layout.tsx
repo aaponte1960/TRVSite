@@ -5,7 +5,7 @@ import "./globals.css"
 export const metadata: Metadata = {
   title: "Dr. Alfonso Aponte",
   description:
-    "Official website for Dr. Alfonso Aponte with contact details, profile, and digital presence in Bayamon, Puerto Rico.",
+    "Official website for Dr. Alfonso Aponte with contact details, profile, and digital presence in Puerto Rico.",
 }
 
 export default function RootLayout({
