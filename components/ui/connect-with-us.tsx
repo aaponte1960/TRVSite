@@ -24,13 +24,13 @@ export const SocialConnect = ({ isDark = true }: SocialConnectProps) => {
         {/* 3D Glowing Container */}
         <div 
           className={cn(
-            "rounded-[2rem] border overflow-hidden p-8 transition-all duration-500 hover:scale-105",
+            "rounded-[2rem] border overflow-hidden p-6 sm:p-8",
             isDark 
               ? "bg-[#0b165f]/80 border-primary/20 backdrop-blur-3xl shadow-[0_0_40px_rgba(36,59,130,0.4)]"
               : "bg-white/90 border-[#cdd9fa] backdrop-blur-3xl shadow-[0_0_40px_rgba(76,114,255,0.15)]"
           )}
         >
-          <div className="flex flex-wrap justify-center gap-8">
+          <div className="grid grid-cols-4 justify-items-center gap-2 sm:flex sm:flex-wrap sm:justify-center sm:gap-8">
             <a href="https://www.facebook.com/Alfonso.Aponte.TRV/" target="_blank" rel="noreferrer" className="social-icon facebook">
               <div className={cn("icon-container", !isDark && "light-mode")}>
                 <Facebook className={cn("h-8 w-8", isDark ? "text-white" : "text-[#1b2a67]")} />
@@ -68,9 +68,10 @@ export const SocialConnect = ({ isDark = true }: SocialConnectProps) => {
           flex-direction: column;
           align-items: center;
           text-decoration: none;
-          transition: all 0.3s ease;
+          transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
           position: relative;
           z-index: 1;
+          -webkit-tap-highlight-color: transparent;
         }
         
         .icon-container {
@@ -78,7 +79,10 @@ export const SocialConnect = ({ isDark = true }: SocialConnectProps) => {
           width: 80px;
           height: 80px;
           border-radius: 50%;
-          transition: all 0.3s ease;
+          transition:
+            transform 300ms cubic-bezier(0.23, 1, 0.32, 1),
+            background 250ms ease,
+            box-shadow 250ms ease;
           position: relative;
           justify-content: center;
           align-items: center;
@@ -95,6 +99,48 @@ export const SocialConnect = ({ isDark = true }: SocialConnectProps) => {
           border: 1px solid rgba(76, 114, 255, 0.2);
         }
         
+        .icon-container.light-mode svg {
+          color: white !important;
+        }
+        
+        @keyframes shake {
+          0%, 100% { transform: translateX(0) rotate(0); }
+          20% { transform: translateX(-5px) rotate(-5deg); }
+          40% { transform: translateX(5px) rotate(5deg); }
+          60% { transform: translateX(-5px) rotate(-5deg); }
+          80% { transform: translateX(5px) rotate(5deg); }
+        }
+        
+        .icon-container::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          border-radius: 50%;
+          background: radial-gradient(circle at center, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          z-index: -1;
+        }
+        
+        .social-icon:active {
+          transform: scale(0.94);
+        }
+
+        @media (max-width: 639px) {
+          .icon-container {
+            width: 64px;
+            height: 64px;
+          }
+          .icon-label {
+            font-size: 0.8rem;
+          }
+        }
+
+        /* Hover effects only where a real pointer exists — on touch they stick */
+        @media (hover: hover) and (pointer: fine) {
         .social-icon:hover .icon-container {
           transform: translateY(-10px) scale(1.1);
         }
@@ -108,13 +154,11 @@ export const SocialConnect = ({ isDark = true }: SocialConnectProps) => {
           margin-top: 12px;
           font-weight: 500;
           opacity: 0.7;
-          transition: all 0.3s ease;
+          transition:
+            opacity 250ms ease,
+            transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        .icon-container.light-mode svg {
-          color: white !important;
-        }
-        
         .social-icon.instagram:hover .icon-container {
           background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
           box-shadow: 0 0 20px rgba(225, 48, 108, 0.6);
@@ -143,30 +187,15 @@ export const SocialConnect = ({ isDark = true }: SocialConnectProps) => {
           animation: shake 0.5s;
         }
         
-        @keyframes shake {
-          0%, 100% { transform: translateX(0) rotate(0); }
-          20% { transform: translateX(-5px) rotate(-5deg); }
-          40% { transform: translateX(5px) rotate(5deg); }
-          60% { transform: translateX(-5px) rotate(-5deg); }
-          80% { transform: translateX(5px) rotate(5deg); }
-        }
-        
-        .icon-container::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          border-radius: 50%;
-          background: radial-gradient(circle at center, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
-          opacity: 0;
-          transition: opacity 0.3s ease;
-          z-index: -1;
-        }
-        
         .social-icon:hover .icon-container::before {
           opacity: 1;
+        }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .social-icon:hover svg {
+            animation: none;
+          }
         }
       `}</style>
     </div>
