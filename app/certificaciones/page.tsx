@@ -57,12 +57,12 @@ export default function CertificacionPage() {
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg" className="rounded-full">
-              <Link href="/certificaciones/solicitud">
-                Solicitar la propuesta <ArrowRight className="ml-2 h-4 w-4" />
+              <Link href="/certificaciones/diagnostico">
+                Hacer el diagnóstico gratuito <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="rounded-full border-primary/40 bg-transparent">
-              <Link href="/certificaciones/diagnostico">Hacer el diagnóstico gratuito</Link>
+              <Link href="/certificaciones/solicitud">Solicitar la propuesta</Link>
             </Button>
           </div>
           <dl className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
