@@ -46,7 +46,7 @@ async function notifyByEmail(lead: Lead) {
   if (!apiKey) return false
   const resend = new Resend(apiKey)
   const senderEmail = process.env.CONTACT_SENDER_EMAIL || "onboarding@resend.dev"
-  const receiverEmail = process.env.CONTACT_RECEIVER_EMAIL || "dralfonsoaponte@gmail.com"
+  const receiverEmail = process.env.CONTACT_RECEIVER_EMAIL || "trvinternacional@gmail.com"
   const rows = FIELDS.filter((f) => lead[f])
     .map(
       (f) =>
@@ -100,7 +100,7 @@ export async function POST(request: Request) {
   for (const r of [sheet, email]) if (r.status === "rejected") console.error("Lead channel error:", r.reason)
 
   if (!saved) {
-    console.error("Lead no guardado: configure SHEETS_WEBHOOK_URL o RESEND_API_KEY.", lead)
+    console.error("Lead no guardado: ningún canal (Google Sheets ni Resend) pudo registrar la solicitud.", lead)
     return NextResponse.json(
       { error: "No pudimos registrar su solicitud en este momento. Escríbanos a dralfonsoaponte@gmail.com." },
       { status: 503 },

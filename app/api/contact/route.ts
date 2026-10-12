@@ -25,7 +25,7 @@ export async function POST(request: Request) {
     }
 
     const senderEmail = process.env.CONTACT_SENDER_EMAIL || "onboarding@resend.dev"
-    const receiverEmail = process.env.CONTACT_RECEIVER_EMAIL || "dralfonsoaponte@gmail.com"
+    const receiverEmail = process.env.CONTACT_RECEIVER_EMAIL || "trvinternacional@gmail.com"
 
     // Enviar el correo usando Resend
     const { data, error } = await resend.emails.send({
